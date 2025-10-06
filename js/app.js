@@ -5,19 +5,20 @@ let amigos = []
 function adicionar() {
     const nomeAmigo = document.getElementById('nome-amigo').value.trim()
     
-    if (!nomeAmigo) {
+    if (!nomeAmigo || amigos.includes(nomeAmigo)) {
+        document.getElementById('nome-amigo').value = ''
         return
     }
     
-    if (!(amigos.includes(nomeAmigo))) {
-        if (listaAmigos.textContent == '') {
-            listaAmigos.textContent = nomeAmigo
-        } else {
-            listaAmigos.textContent += `, ${nomeAmigo}`
-        }
+    if (listaAmigos.textContent == '') {
+        listaAmigos.textContent = nomeAmigo
+    } else {
+        listaAmigos.textContent += `, ${nomeAmigo}`
     }
+
     amigos.push(nomeAmigo)
     document.getElementById('nome-amigo').value = ''
+    console.log(amigos)
 }
 
 function sortear() {
@@ -25,6 +26,10 @@ function sortear() {
     let amigosSorteados = []
     let max = amigos.length
     
+    if (amigos < 2) {
+        return
+    }
+
     for (i=0;i<max;i++) {
         let amigoSorteado = Math.floor(Math.random() * max)
         while (amigosSorteados.includes(amigos[amigoSorteado])) {
