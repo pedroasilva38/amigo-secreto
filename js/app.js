@@ -1,6 +1,7 @@
 const listaSorteio = document.getElementById('lista-sorteio')
 const listaAmigos = document.getElementById('lista-amigos')
 let amigos = []
+
 function adicionar() {
     const nomeAmigo = document.getElementById('nome-amigo').value.trim()
     
@@ -23,11 +24,6 @@ function sortear() {
     document.getElementById('lista-sorteio').textContent = ''
     let amigosSorteados = []
     let max = amigos.length
-    
-    if (max % 2) {
-        alert('O número de amigos deve ser par!')
-        return
-    }
     
     for (i=0;i<max;i++) {
         let amigoSorteado = Math.floor(Math.random() * max)
