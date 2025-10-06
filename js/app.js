@@ -3,7 +3,7 @@ const listaAmigos = document.getElementById('lista-amigos')
 let amigos = []
 
 function adicionar() {
-    const nomeAmigo = document.getElementById('nome-amigo').value.trim()
+    const nomeAmigo = document.getElementById('nome-amigo').value.trim().toLowerCase()
     
     if (!nomeAmigo || amigos.includes(nomeAmigo)) {
         document.getElementById('nome-amigo').value = ''
@@ -15,7 +15,6 @@ function adicionar() {
     } else {
         listaAmigos.textContent += `, ${nomeAmigo}`
     }
-
     amigos.push(nomeAmigo)
     document.getElementById('nome-amigo').value = ''
     console.log(amigos)
@@ -26,7 +25,7 @@ function sortear() {
     let amigosSorteados = []
     let max = amigos.length
     
-    if (amigos < 2) {
+    if (amigos < 3) {
         return
     }
 
